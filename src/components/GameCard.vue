@@ -1,22 +1,37 @@
+<script setup>
+defineProps({
+    game: {
+        type: Object,
+        default: {
+            id: 1,
+            title: "Game",
+            short_description:
+                "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium",
+            release_date: "11.02.2003",
+            platform: "Windows",
+            thumbnail:
+                "https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385.jpg",
+        },
+    },
+});
+</script>
+
 <template>
     <div>
-        <img src="https://png.pngtree.com/thumb_back/fw800/background/20230610/pngtree-picture-of-a-blue-bird-on-a-black-background-image_2937385.jpg"/>
-        <h1>Game</h1>
-        <p>ijiiiiiiiiiiiiiiiiiiiiiiiii
-            ioiiieirge
-            gergegsergwergsergserg
-            sergsergsergser
-            gergegsergwergsergsergsergsergerg
-            sergsergsergserg</p>
+        <img :src="game.thumbnail"/>
+        <h1>{{ game.title }}</h1>
+        <p>{{ game.short_description }}</p>
         <nav>
             <i class="fas fa-desktop"></i>
-            <h4>Windows</h4>
+            <h4>{{ game.platform }}</h4>
         </nav>
         <nav>
             <i class="far fa-clock"></i>
-            <h4>date</h4>
+            <h4>{{ game.release_date }}</h4>
         </nav>
-        <router-link to="/">Подробнее</router-link>
+        <router-link :to="{ name: 'detail', params: { id: game.id } }"
+            >Подробнее</router-link
+        >
     </div>
 </template>
 
